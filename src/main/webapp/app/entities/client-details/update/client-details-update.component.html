@@ -1,0 +1,136 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-client-details-heading" data-cy="ClientDetailsCreateUpdateHeading">Create or edit a Client Details</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_kominyDymowe">Kominy Dymowe</label>
+          <input
+            type="text"
+            class="form-control"
+            name="kominyDymowe"
+            id="field_kominyDymowe"
+            data-cy="kominyDymowe"
+            formControlName="kominyDymowe"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_kominySpalinowe">Kominy Spalinowe</label>
+          <input
+            type="text"
+            class="form-control"
+            name="kominySpalinowe"
+            id="field_kominySpalinowe"
+            data-cy="kominySpalinowe"
+            formControlName="kominySpalinowe"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_przewodyWentylacyjne">Przewody Wentylacyjne</label>
+          <input
+            type="text"
+            class="form-control"
+            name="przewodyWentylacyjne"
+            id="field_przewodyWentylacyjne"
+            data-cy="przewodyWentylacyjne"
+            formControlName="przewodyWentylacyjne"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_ryczaltJednorazowy">Ryczalt Jednorazowy</label>
+          <input
+            type="text"
+            class="form-control"
+            name="ryczaltJednorazowy"
+            id="field_ryczaltJednorazowy"
+            data-cy="ryczaltJednorazowy"
+            formControlName="ryczaltJednorazowy"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dataCzyszczenia">Data Czyszczenia</label>
+          <div class="input-group">
+            <input
+              id="field_dataCzyszczenia"
+              data-cy="dataCzyszczenia"
+              type="text"
+              class="form-control"
+              name="dataCzyszczenia"
+              ngbDatepicker
+              #dataCzyszczeniaDp="ngbDatepicker"
+              formControlName="dataCzyszczenia"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataCzyszczeniaDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dzienCzyszczenia">Dzien Czyszczenia</label>
+          <input
+            type="number"
+            class="form-control"
+            name="dzienCzyszczenia"
+            id="field_dzienCzyszczenia"
+            data-cy="dzienCzyszczenia"
+            formControlName="dzienCzyszczenia"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_zaplacono">Zaplacono</label>
+          <input type="text" class="form-control" name="zaplacono" id="field_zaplacono" data-cy="zaplacono" formControlName="zaplacono" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_podpis">Podpis</label>
+          <input type="text" class="form-control" name="podpis" id="field_podpis" data-cy="podpis" formControlName="podpis" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_client">Client</label>
+          <select class="form-control" id="field_client" data-cy="client" name="client" formControlName="client">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="clientOption.id === editForm.get('client')!.value?.id ? editForm.get('client')!.value : clientOption"
+              *ngFor="let clientOption of clientsSharedCollection; trackBy: trackClientById"
+            >
+              {{ clientOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

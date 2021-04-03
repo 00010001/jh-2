@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="clientDetails">
+      <h2 data-cy="clientDetailsDetailsHeading"><span>Client Details</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ clientDetails.id }}</span>
+        </dd>
+        <dt><span>Kominy Dymowe</span></dt>
+        <dd>
+          <span>{{ clientDetails.kominyDymowe }}</span>
+        </dd>
+        <dt><span>Kominy Spalinowe</span></dt>
+        <dd>
+          <span>{{ clientDetails.kominySpalinowe }}</span>
+        </dd>
+        <dt><span>Przewody Wentylacyjne</span></dt>
+        <dd>
+          <span>{{ clientDetails.przewodyWentylacyjne }}</span>
+        </dd>
+        <dt><span>Ryczalt Jednorazowy</span></dt>
+        <dd>
+          <span>{{ clientDetails.ryczaltJednorazowy }}</span>
+        </dd>
+        <dt><span>Data Czyszczenia</span></dt>
+        <dd>
+          <span>{{ clientDetails.dataCzyszczenia | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Dzien Czyszczenia</span></dt>
+        <dd>
+          <span>{{ clientDetails.dzienCzyszczenia }}</span>
+        </dd>
+        <dt><span>Zaplacono</span></dt>
+        <dd>
+          <span>{{ clientDetails.zaplacono }}</span>
+        </dd>
+        <dt><span>Podpis</span></dt>
+        <dd>
+          <span>{{ clientDetails.podpis }}</span>
+        </dd>
+        <dt><span>Client</span></dt>
+        <dd>
+          <div *ngIf="clientDetails.client">
+            <a [routerLink]="['/client', clientDetails.client?.id, 'view']">{{ clientDetails.client?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/client-details', clientDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

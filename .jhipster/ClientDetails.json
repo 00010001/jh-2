@@ -1,0 +1,55 @@
+{
+  "name": "ClientDetails",
+  "fields": [
+    {
+      "fieldName": "kominyDymowe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kominySpalinowe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "przewodyWentylacyjne",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ryczaltJednorazowy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataCzyszczenia",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dzienCzyszczenia",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "zaplacono",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "podpis",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "clientDetails",
+      "relationshipName": "client"
+    }
+  ],
+  "entityTableName": "client_details",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210403141632"
+}

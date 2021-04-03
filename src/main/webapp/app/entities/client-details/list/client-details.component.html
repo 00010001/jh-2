@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="ClientDetailsHeading">
+    <span>Client Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-client-details"
+        [routerLink]="['/client-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Client Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="clientDetails?.length === 0">
+    <span>No clientDetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="clientDetails && clientDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Kominy Dymowe</span></th>
+          <th scope="col"><span>Kominy Spalinowe</span></th>
+          <th scope="col"><span>Przewody Wentylacyjne</span></th>
+          <th scope="col"><span>Ryczalt Jednorazowy</span></th>
+          <th scope="col"><span>Data Czyszczenia</span></th>
+          <th scope="col"><span>Dzien Czyszczenia</span></th>
+          <th scope="col"><span>Zaplacono</span></th>
+          <th scope="col"><span>Podpis</span></th>
+          <th scope="col"><span>Client</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clientDetails of clientDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/client-details', clientDetails.id, 'view']">{{ clientDetails.id }}</a>
+          </td>
+          <td>{{ clientDetails.kominyDymowe }}</td>
+          <td>{{ clientDetails.kominySpalinowe }}</td>
+          <td>{{ clientDetails.przewodyWentylacyjne }}</td>
+          <td>{{ clientDetails.ryczaltJednorazowy }}</td>
+          <td>{{ clientDetails.dataCzyszczenia | formatMediumDate }}</td>
+          <td>{{ clientDetails.dzienCzyszczenia }}</td>
+          <td>{{ clientDetails.zaplacono }}</td>
+          <td>{{ clientDetails.podpis }}</td>
+          <td>
+            <div *ngIf="clientDetails.client">
+              <a [routerLink]="['/client', clientDetails.client?.id, 'view']">{{ clientDetails.client?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/client-details', clientDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/client-details', clientDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(clientDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

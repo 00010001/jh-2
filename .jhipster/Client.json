@@ -1,0 +1,35 @@
+{
+  "name": "Client",
+  "fields": [
+    {
+      "fieldName": "wlascicielDomu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numer",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "adres",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "clientDetails",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "clientDetails"
+    }
+  ],
+  "entityTableName": "client",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210403141631"
+}

@@ -1,0 +1,20 @@
+entity Client {
+	wlascicielDomu String,
+	numer Integer,
+	adres String
+}
+
+entity ClientDetails {
+	kominyDymowe String,
+	kominySpalinowe String,
+	przewodyWentylacyjne String,
+	ryczaltJednorazowy String,
+    dataCzyszczenia LocalDate,
+    dzienCzyszczenia Integer,
+    zaplacono String,
+    podpis String
+}
+
+relationship OneToMany {
+  Client{clientDetails} to ClientDetails{client}
+}

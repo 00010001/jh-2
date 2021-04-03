@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-client-heading" data-cy="ClientCreateUpdateHeading">Create or edit a Client</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_wlascicielDomu">Wlasciciel Domu</label>
+          <input
+            type="text"
+            class="form-control"
+            name="wlascicielDomu"
+            id="field_wlascicielDomu"
+            data-cy="wlascicielDomu"
+            formControlName="wlascicielDomu"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_numer">Numer</label>
+          <input type="number" class="form-control" name="numer" id="field_numer" data-cy="numer" formControlName="numer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_adres">Adres</label>
+          <input type="text" class="form-control" name="adres" id="field_adres" data-cy="adres" formControlName="adres" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
