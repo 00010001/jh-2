@@ -18,7 +18,7 @@
     "creationTimestamp": 1617456628501,
     "serviceDiscoveryType": false,
     "reactive": false,
-    "authenticationType": "oauth2",
+    "authenticationType": "session",
     "packageName": "com.mycompany.myapp",
     "serverPort": "8080",
     "cacheProvider": "caffeine",
@@ -42,6 +42,7 @@
     "clientThemeVariant": "",
     "languages": ["en", "fr"],
     "entities": ["Client", "ClientDetails"],
-    "lastLiquibaseTimestamp": 1617459392000
+    "lastLiquibaseTimestamp": 1617459392000,
+    "rememberMeKey": "44baba60583859a15e672e8abc403e563d7fd01e4224db94fb972d038a4844c713d0daa9647ac05c92af2c6515c4f02b0977"
   }
 }

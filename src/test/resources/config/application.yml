@@ -68,13 +68,6 @@ spring:
         size: 1
   thymeleaf:
     mode: HTML
-  # Allow SecurityConfiguration to initialize w/o specifying an empty issuer-uri is OK
-  security:
-    oauth2:
-      client:
-        provider:
-          oidc:
-            issuer-uri: http://DO_NOT_CALL:9080/auth/realms/jhipster
 
 server:
   port: 10344
@@ -97,9 +90,10 @@ jhipster:
       host: localhost
       port: 5000
       queue-size: 512
-  mail:
-    from: test@localhost
-    base-url: http://127.0.0.1:8080
+  security:
+    remember-me:
+      # security key (this key should be unique for your application, and kept secret)
+      key: 44baba60583859a15e672e8abc403e563d7fd01e4224db94fb972d038a4844c713d0daa9647ac05c92af2c6515c4f02b0977
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
